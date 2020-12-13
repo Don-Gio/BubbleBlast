@@ -1,6 +1,8 @@
 #ifndef FUNZIONI_H
 #define FUNZIONI_H
 
-//Prototipy delle funzioni usate nel programma
+//Prototipi delle funzioni usate nel programma
+
+char bollaRandom();
 
 #endif
