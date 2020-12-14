@@ -82,11 +82,53 @@ void cambioStatoBolla (char griglia[5][6], int riga, int colonna) {
 //Funzione che propaga l'esplosione
 void propaga (char griglia[5][6], int riga, int colonna) {
     int j, k;
+    int tempRig, tempCol;
+    char tempGri;
+
+    cambioStatoBolla(griglia, riga, colonna);
+
+    tempRig=riga;
+    tempCol=colonna;
+    tempGri=griglia[riga][colonna];
+    
+    for (j=0; j<6; j++){
+        if (griglia[riga][j]!=79){
+            propaga2(griglia, riga, j);
+        } else {
+            cambioStatoBolla(griglia, riga, j);
+        }
+    }
+    for (k=0; k<5; k++){
+        if (griglia[k][colonna]!=79){
+            propaga2(griglia, k, colonna);
+        } else {
+            cambioStatoBolla(griglia, k, colonna);
+        }
+    }
+    griglia[tempRig][tempCol]=tempGri;
+}
+//Fine funzione che propaga l'esplosione
+
+//Funzione che fa esplodere e propaga altre bolle O incontrate
+void propaga2 (char griglia[5][6], int riga, int colonna) {
+    int j, k;
+    int tempRig, tempCol;
+    char tempGri;
+
+    cambioStatoBolla(griglia, riga, colonna);
+
+    tempRig=riga;
+    tempCol=colonna;
+    tempGri=griglia[riga][colonna];
+    
     for (j=0; j<6; j++){
         cambioStatoBolla(griglia, riga, j);
     }
     for (k=0; k<5; k++){
-        cambioStatoBolla(griglia, k, colonna);
+         cambioStatoBolla(griglia, k, colonna);
     }
+    griglia[tempRig][tempCol]=tempGri;
 }
-//Fine funzione che propaga l'esplosione
+//Funzione che fa esplodere e propaga altre bolle O incontrate
+
+

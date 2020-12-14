@@ -13,4 +13,6 @@ void cambioStatoBolla (char griglia[5][6], int riga, int colonna);
 
 void propaga (char griglia[5][6], int riga, int colonna);
 
+void propaga2 (char griglia[5][6], int riga, int colonna);
+
 #endif

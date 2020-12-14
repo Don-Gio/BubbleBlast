@@ -30,6 +30,6 @@ int main() {
     
    
 
-   getchar();getchar();
+   getchar();getchar();getchar();
 
 }
