@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include "funzioni.h"
 
@@ -18,6 +19,9 @@ int main() {
     }
     //Fine riempimento griglia
 
+    //printf("Sono necessari %d passi per finire", passiNecessari(griglia));
+   
+    while (verificaGriglia(griglia)==0){
     selezionaBolla(griglia, &riga, &colonna);
 
     if (griglia[riga][colonna]==79) {
@@ -27,7 +31,7 @@ int main() {
     }
     
     mostraGriglia(griglia);
-    
+   }
    
 
    getchar();getchar();getchar();

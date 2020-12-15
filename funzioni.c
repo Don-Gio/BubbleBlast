@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 #include <unistd.h>
 #include "funzioni.h"
 
@@ -39,9 +40,9 @@ char bollaRandom() {
    
    if (casuale>-5 && casuale<10){
        bolla=sgon;
-   } else if (casuale>=10 && casuale<20){
+   } else if (casuale>=10 && casuale<25){
        bolla=met;
-   } else if (casuale>=20 && casuale<=30){
+   } else if (casuale>=25 && casuale<=30){
        bolla=esplo;
    }
    return bolla;
@@ -92,14 +93,14 @@ void propaga (char griglia[5][6], int riga, int colonna) {
     tempGri=griglia[riga][colonna];
     
     for (j=0; j<6; j++){
-        if (griglia[riga][j]!=79){
+        if (griglia[riga][j]==79){
             propaga2(griglia, riga, j);
         } else {
             cambioStatoBolla(griglia, riga, j);
         }
     }
     for (k=0; k<5; k++){
-        if (griglia[k][colonna]!=79){
+        if (griglia[k][colonna]==79){
             propaga2(griglia, k, colonna);
         } else {
             cambioStatoBolla(griglia, k, colonna);
@@ -131,4 +132,43 @@ void propaga2 (char griglia[5][6], int riga, int colonna) {
 }
 //Funzione che fa esplodere e propaga altre bolle O incontrate
 
+//Verifica che se la griglia sia vuota o meno
+bool verificaGriglia (char griglia[5][6]){
+    int temp, counter_rig, counter_col=0;
+    for (counter_rig=0; counter_rig<5; counter_rig++){
+        for (counter_col=0; counter_col<6; counter_col++){
+            if (griglia[counter_rig][counter_col]==79) {
+                temp=temp+1;
+            }
+        }
+    }
+    if (temp==30){
+        return true;
+    } else
+    {
+       return false; 
+    }
+    
+}
+//Fine verifica riempimento griglia.
 
+//Prova a risolverla
+//RIPRENDERE DA QUÍ 15/12/2020
+int passiNecessari (char griglia[5][6]) {
+
+    int temp, counter_rig, counter_col=0;
+    while (verificaGriglia(griglia)==0){
+        for (counter_rig=0; counter_rig<5; counter_rig++){
+            for (counter_col=0; counter_col<6; counter_col++){
+                if (griglia[counter_rig][counter_col]==79) {
+                    propaga(griglia, counter_rig, counter_col);
+                    temp=temp+1;
+                } else {
+                    cambioStatoBolla(griglia, counter_rig, counter_col);
+                    temp=temp+1;
+                }
+            }
+        }
+    }
+    return temp;
+}
