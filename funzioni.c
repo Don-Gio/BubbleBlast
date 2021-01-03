@@ -21,13 +21,13 @@ void mostraGriglia (char griglia[5][6]) {
 
 //Questa funzione crea una bolla con uno stato randomico
  /* Definisco le 3 bolle:
-    IN PROCINTO DI ESPLODERE > @
-    GONFIE A METÁ > a
+    IN PROCINTO DI ESPLODERE > O
+    GONFIE A METÁ > c
     SGONFIE > -
     */
 char bollaRandom() {
-   char esplo=79; //@ in ASCII
-   char met=99; //a in ASCII
+   char esplo=79; //O in ASCII
+   char met=99; //c in ASCII
    char sgon=45; //- in ASCII
    char bolla;
    int casuale=0;
@@ -53,7 +53,7 @@ char bollaRandom() {
 void selezionaBolla (char griglia[5][6], int *riga, int *colonna) {
     int new_riga, new_colonna;
     printf("\n");
-    printf("Seleziona la bolla\n");
+    printf("Seleziona la bolla da cambiare\n");
     printf("Inserisci numero riga: ");
     scanf("%d", &new_riga);
     printf("Inserisci numero colonna: ");
@@ -148,19 +148,21 @@ void propagaOriz (char griglia[5][6], int riga, int colonna) {
 
 
 //Verifica che se la griglia sia vuota o meno
+//Se vuota ritorna 1 altrimenti ritorna 0
 bool verificaGriglia (char griglia[5][6]){
     int temp, counter_rig, counter_col=0;
     for (counter_rig=0; counter_rig<5; counter_rig++){
         for (counter_col=0; counter_col<6; counter_col++){
             if (griglia[counter_rig][counter_col]==45) {
-                temp=temp+1;
+                temp++;
             }
         }
     }
+    //Altrimenti tiene conto degli spazi di tabulazione
+    temp=temp-5;
     if (temp==30){
         return true;
-    } else
-    {
+    } else {
        return false; 
     }
     
@@ -168,6 +170,7 @@ bool verificaGriglia (char griglia[5][6]){
 //Fine verifica riempimento griglia.
 
 //Prova a risolverla
+//Descritto un algoritmo di risoluzione per schema
 int passiNecessari (char griglia[5][6]) {
 
     int temp, counter_rig, counter_col=0;
@@ -220,6 +223,7 @@ int passiNecessari (char griglia[5][6]) {
     //Fa esplodere nuovamente la prima bolla (posizione 0-0)
     propaga(griglia, 0, 0);
     temp=temp+1;
+    //A questo punto la griglia sará tutta costituita di -
 
     return temp;
 }
