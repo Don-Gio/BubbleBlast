@@ -15,9 +15,7 @@ i requisiti funzionali del programma.
 In seguito, sempre sull'onda del sopracitato metodo, il progetto é stato decomposto in funzionalitá basiche
 che serviranno per definire i moduli di piú basso livello, essi interagiranno tra di loro durante
 l'esecuzione del programma.
-
-Di seguito una foto del primo sviluppo cartaceo.
-
+Sono stati inoltre definiti gli oggetti basici del programma.
 
 Una volta preparato l'ambiente di sviluppo (Editor+Compilatore) é stato deciso di dividere il progetto in piú file:
 
@@ -32,7 +30,7 @@ Inoltre consente l'Information Hiding dei moduli di cui i progetto si avvale.
 
 Ogni funzionalitá o blocco del codice é stato opportunamente commentato.
 
-##Funzionamento
+## Funzionamento
 Al momento dell'avvio del gioco viene presentato un breve benvenuto con le istruzioni per affrontare
 il gioco.
 Una percentuale di caricamento viene poi presentata in attesa della generazione della tabella.
