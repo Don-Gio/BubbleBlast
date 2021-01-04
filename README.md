@@ -7,7 +7,7 @@ Matricola 896462
 ## Introduzione al progetto
 Per il progetto richiesto per l'esame di programmazione in C svilupperó il gioco Bubble Blast.
 
-La scelta viene dal conoscimento pregresso del comportamento di giochi in stile Bubble Blast.
+La scelta viene dalla conoscienza pregresso del comportamento di giochi in stile Bubble Blast.
 
 ## Sviluppo
 Lo sviluppo del progetto é stato effettuato in primo luogo con un approccio testuale su carta per definire
